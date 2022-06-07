@@ -1,3 +1,5 @@
+// This is a simple go program to demostrate how to
+// write a simple text file to working directory
 package main
 
 import (
