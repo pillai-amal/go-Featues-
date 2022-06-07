@@ -5,6 +5,7 @@ package main
 import (
 	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 )
 
@@ -14,8 +15,15 @@ func main() {
 	checkError(err)
 	length, err := io.WriteString(file, content)
 	checkError(err)
-	fmt.Printf("Wrote the the filw with %v characters", length)
+	fmt.Printf("Wrote the the filw with %v characters \n", length)
 	defer file.Close()
+	defer readFile("textfile.txt")
+}
+
+func readFile(fileName string) {
+	data, err := ioutil.ReadFile(fileName)
+	checkError(err)
+	fmt.Printf("The %v contains : %v", fileName, string(data))
 }
 
 func checkError(err error) {
